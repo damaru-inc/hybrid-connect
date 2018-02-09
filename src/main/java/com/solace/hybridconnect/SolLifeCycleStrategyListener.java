@@ -1,4 +1,4 @@
-package jmsdemo;
+package com.solace.hybridconnect;
 
 import java.util.Collection;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -30,95 +30,90 @@ public class SolLifeCycleStrategyListener implements LifecycleStrategy {
 	@Autowired
 	private ConnectionFactory connectionFactory;
 
-//	@Autowired
-//	private ConnectionFactory rabbitJmsConnectionFactory;
-
 	@Override
 	public void onContextStart(CamelContext context)
 			throws VetoCamelContextStartException {
-		logger.info("onContextStart " + context);
+		logger.info("onContextStart, adding solace-jms to the context " + context);
 		context.addComponent("solace-jms", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
-		//context.addComponent("rabbit-jms", JmsComponent.jmsComponentAutoAcknowledge(rabbitJmsConnectionFactory));
-
 	}
 
 	@Override
 	public void onContextStop(CamelContext context) {
-		logger.info("onContextStop " + context);
+		logger.debug("onContextStop " + context);
 		// solModuleFactory.getSolJMSModule().shutdown();
 	}
 
 	@Override
 	public void onComponentAdd(String name, org.apache.camel.Component component) {
-		logger.info("onComponentAdd " + name);
+		logger.debug("onComponentAdd " + name);
 	}
 
 	@Override
 	public void onComponentRemove(String name,
 			org.apache.camel.Component component) {
-		logger.info("onComponentRemove " + name);
+		logger.debug("onComponentRemove " + name);
 	}
 
 	@Override
 	public void onEndpointAdd(Endpoint endpoint) {
-		logger.info("onEndpointAdd " + endpoint);
+		logger.debug("onEndpointAdd " + endpoint);
 	}
 
 	@Override
 	public void onEndpointRemove(Endpoint endpoint) {
-		logger.info("onEndpointRemove " + endpoint);
+		logger.debug("onEndpointRemove " + endpoint);
 	}
 
 	@Override
 	public void onServiceAdd(CamelContext context, Service service, Route route) {
-		logger.info("onServiceAdd " + context + " " + service);
+		logger.debug("onServiceAdd " + context + " " + service);
 	}
 
 	@Override
 	public void onServiceRemove(CamelContext context, Service service,
 			Route route) {
-		logger.info("onServiceRemove " + context + " " + service);
+		logger.debug("onServiceRemove " + context + " " + service);
 	}
 
 	@Override
 	public void onRoutesAdd(Collection<Route> routes) {
-		logger.info("onRoutesAdd " + routes);
+		logger.debug("onRoutesAdd " + routes);
 
 	}
 
 	@Override
 	public void onRoutesRemove(Collection<Route> routes) {
-		logger.info("onRoutesRemove " + routes);
+		logger.debug("onRoutesRemove " + routes);
 	}
 
 	@Override
 	public void onRouteContextCreate(RouteContext routeContext) {
-		logger.info("onRouteContextCreate " + routeContext);
+		logger.debug("onRouteContextCreate " + routeContext);
 	}
 
 	@Override
 	public void onErrorHandlerAdd(RouteContext routeContext,
 			Processor errorHandler, ErrorHandlerFactory errorHandlerBuilder) {
-		logger.info("onErrorHandlerAdd ");
+		logger.debug("onErrorHandlerAdd ");
 	}
 
 	@Override
 	public void onErrorHandlerRemove(RouteContext routeContext,
 			Processor errorHandler, ErrorHandlerFactory errorHandlerBuilder) {
-		logger.info("onErrorHandlerAdd");
+		logger.debug("onErrorHandlerAdd");
 	}
 
 	@Override
 	public void onThreadPoolAdd(CamelContext camelContext,
 			ThreadPoolExecutor threadPool, String id, String sourceId,
 			String routeId, String threadPoolProfileId) {
-		logger.info("onThreadPoolAdd " + camelContext);
+		logger.debug("onThreadPoolAdd " + camelContext);
 	}
 
 	@Override
 	public void onThreadPoolRemove(CamelContext camelContext,
 			ThreadPoolExecutor threadPool) {
-		logger.info("onThreadPoolRemove " + camelContext);
+		logger.debug("onThreadPoolRemove " + camelContext);
 
 	}
 

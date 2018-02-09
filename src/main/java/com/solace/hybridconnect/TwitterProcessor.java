@@ -1,4 +1,4 @@
-package jmsdemo;
+package com.solace.hybridconnect;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import twitter4j.Status;
 
 @Component
-public class SampleProcessor implements Processor {
-	private static final Logger logger = LoggerFactory.getLogger(SampleProcessor.class);
+public class TwitterProcessor implements Processor {
+	private static final Logger logger = LoggerFactory.getLogger(TwitterProcessor.class);
 	
 	@Override
 	public void process(Exchange exchange) throws Exception {

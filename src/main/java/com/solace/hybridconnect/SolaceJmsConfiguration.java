@@ -1,4 +1,4 @@
-package jmsdemo;
+package com.solace.hybridconnect;
 
 import javax.jms.ConnectionFactory;
 
